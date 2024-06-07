@@ -3,9 +3,26 @@ linters-settings:
     disabled-checks:
       - ifElseChain
       - elseif
+  gofumpt:
+    module-path: github.com/syndtr/goleveldb
+    extra-rules: true
 
 linters:
   enable:
-    - gofmt
+    - megacheck
+    - govet
+    - gofumpt
     - gocritic
     - unconvert
+
+  disable:
+    - maligned
+    - prealloc
+  presets:
+    - bugs
+    - unused
+  fast: false
+
+
+run:
+  concurrency: 5
